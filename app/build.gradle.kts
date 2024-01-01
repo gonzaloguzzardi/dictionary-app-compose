@@ -1,6 +1,12 @@
 plugins {
+    kotlin("kapt")
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.hilt)
+}
+
+kapt {
+    correctErrorTypes = true
 }
 
 android {
@@ -80,6 +86,16 @@ dependencies {
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
+
+    // Dependency Injection
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+
+    // Retrofit
+    implementation(libs.retrofit2)
+    implementation(libs.retrofit2.gson.converter)
+    implementation(libs.okHttp3)
+    implementation(libs.okHttp3.logging.interceptor)
 
     // Debug
     debugImplementation(libs.ui.tooling)

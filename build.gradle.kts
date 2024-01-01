@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.androidApplication) apply false
     alias(libs.plugins.kotlinAndroid) apply false
+    alias(libs.plugins.kotlinKapt) apply false
+    alias(libs.plugins.hilt) apply false
     alias(libs.plugins.detekt) apply true
 }
 
@@ -12,5 +14,5 @@ detekt {
 }
 
 dependencies {
-    detektPlugins(libs.detektFormatting)
+    detektPlugins(libs.detekt.formatting)
 }
