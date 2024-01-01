@@ -1,5 +1,3 @@
-import io.gitlab.arturbosch.detekt.Detekt
-
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
@@ -8,6 +6,10 @@ plugins {
 android {
     namespace = "com.example.dictionaryappcompose"
     compileSdk = 34
+
+    buildFeatures {
+        buildConfig = true
+    }
 
     defaultConfig {
         applicationId = "com.example.dictionaryappcompose"
@@ -24,10 +26,14 @@ android {
 
     buildTypes {
         debug {
+            buildConfigField("String", "RAPID_API_KEY", getRapidApiKey())
+
             isMinifyEnabled = false
             isDebuggable = true
         }
         release {
+            buildConfigField("String", "RAPID_API_KEY", getRapidApiKey())
+
             isMinifyEnabled = true
             isShrinkResources = true
             isDebuggable = false
@@ -57,6 +63,14 @@ android {
     }
 }
 
+fun getRapidApiKey(): String {
+    val keyValues = HashMap<String, String>()
+    File("${project.rootDir}/secrets.properties").forEachLine {
+        keyValues[it.split("=")[0]] = it.split("=")[1]
+    }
+    return keyValues["RAPID_API_KEY"] ?: ""
+}
+
 dependencies {
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
@@ -67,11 +81,14 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
 
+    // Debug
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
 
+    // Test
     testImplementation(libs.junit)
 
+    // Android Test
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(platform(libs.compose.bom))
