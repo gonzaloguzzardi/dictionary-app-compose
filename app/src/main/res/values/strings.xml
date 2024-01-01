@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Dictionary App Compose</string>
+    <string name="app_name">Dictionary App using Compose</string>
+    <string name="dictionary_screen_label">Dictionary App</string>
 </resources>
