@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">Dictionary App using Compose</string>
     <string name="dictionary_screen_label">Dictionary App</string>
+
+    <!-- Search View -->
+    <string name="search_view_input_label">Search a word</string>
+    <string name="search_view_button_text">Search</string>
+
+    <!-- Search Filters -->
+    <string name="search_filters_sort_label">Sort by</string>
+    <string-array name="search_filters_sort_options">
+        <item>Most Upvoted</item>
+        <item>Least Upvoted</item>
+        <item>Most Downvoted</item>
+        <item>Least Downvoted</item>
+    </string-array>
 </resources>

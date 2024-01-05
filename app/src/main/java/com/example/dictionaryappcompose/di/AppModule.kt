@@ -6,6 +6,8 @@ import com.example.dictionaryappcompose.data.repository.datasources.DataSource
 import com.example.dictionaryappcompose.data.repository.datasources.remote.RemoteDataSource
 import com.example.dictionaryappcompose.data.repository.datasources.remote.apis.DictionaryRapidApi
 import com.example.dictionaryappcompose.domain.repository.DictionaryRepository
+import com.example.dictionaryappcompose.domain.useCases.getDefinitions.GetDefinitionsUseCase
+import com.example.dictionaryappcompose.domain.useCases.sortDefinitions.SortDefinitionsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -51,11 +53,21 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDictionaryRemoteDataSource(remoteDataSource: RemoteDataSource): DataSource =
-        remoteDataSource
+    fun provideDictionaryRemoteDataSource(api: DictionaryRapidApi): DataSource =
+        RemoteDataSource(api)
 
     @Provides
     @Singleton
     fun provideDictionaryRepository(remoteDataSource: RemoteDataSource): DictionaryRepository =
         DictionaryRepositoryImpl(remoteDataSource)
+
+    @Provides
+    @Singleton
+    fun provideGetDefinitionsUseCase(repository: DictionaryRepository): GetDefinitionsUseCase =
+        GetDefinitionsUseCase(repository)
+
+    @Provides
+    @Singleton
+    fun provideSortDefinitionsUseCase(): SortDefinitionsUseCase =
+        SortDefinitionsUseCase()
 }
