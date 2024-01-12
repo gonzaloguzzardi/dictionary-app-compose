@@ -28,28 +28,21 @@ class DefinitionsListViewModel @Inject constructor(
         getDefinitionsUseCase(word).onEach { result ->
             when (result) {
                 is Resource.Loading -> {
-                    _uiState.update { _ ->
-                        DefinitionsListState(
-                            isLoading = true,
-                            definitions = _uiState.value.definitions
-                        )
+                    _uiState.update { currentState ->
+                        currentState.copy(isLoading = true)
                     }
                 }
 
                 is Resource.Success -> {
-                    _uiState.update { _ ->
-                        DefinitionsListState(
-                            isLoading = false,
-                            definitions = result.data.orEmpty()
-                        )
+                    _uiState.update { currentState ->
+                        currentState.copy(isLoading = false, definitions = result.data.orEmpty())
                     }
                 }
 
                 is Resource.Error -> {
-                    _uiState.update { _ ->
-                        DefinitionsListState(
+                    _uiState.update { currentState ->
+                        currentState.copy(
                             isLoading = false,
-                            definitions = _uiState.value.definitions,
                             error = result.message ?: "An unexpected error occurred"
                         )
                     }

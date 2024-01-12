@@ -6,6 +6,7 @@ import com.example.dictionaryappcompose.domain.model.Definition
 @Immutable
 data class DefinitionsListState(
     val isLoading: Boolean = false,
+    val wordSearched: String = "",
     val definitions: List<Definition> = emptyList(),
     val error: String = ""
 )

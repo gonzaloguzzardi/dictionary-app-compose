@@ -14,4 +14,7 @@
         <item>Most Downvoted</item>
         <item>Least Downvoted</item>
     </string-array>
+
+    <!-- Definitions List -->
+    <string name="definitions_list_header">Results for: %s</string>
 </resources>

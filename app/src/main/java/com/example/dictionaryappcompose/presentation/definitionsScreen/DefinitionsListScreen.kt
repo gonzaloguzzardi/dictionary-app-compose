@@ -74,6 +74,7 @@ fun DefinitionsListScreenContent(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(top = 16.dp),
+                        wordSearched = uiState.wordSearched,
                         definitions = uiState.definitions
                     )
                 } else if (uiState.error.isNotBlank()) {
