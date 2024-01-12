@@ -1,4 +1,4 @@
-package com.example.dictionaryappcompose.presentation.definitions_list
+package com.example.dictionaryappcompose.presentation.definitionsScreen
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

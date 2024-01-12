@@ -1,4 +1,4 @@
-package com.example.dictionaryappcompose.presentation.definitions_list.components.searchFilters
+package com.example.dictionaryappcompose.presentation.components.searchFilters
 
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row

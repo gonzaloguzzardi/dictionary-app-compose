@@ -1,4 +1,4 @@
-package com.example.dictionaryappcompose.presentation.definitions_list
+package com.example.dictionaryappcompose.presentation.definitionsScreen
 
 import androidx.compose.runtime.Immutable
 import com.example.dictionaryappcompose.domain.model.Definition

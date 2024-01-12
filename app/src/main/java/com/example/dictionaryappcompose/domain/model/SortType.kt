@@ -1,6 +1,6 @@
 package com.example.dictionaryappcompose.domain.model
 
-enum class SortType() {
+enum class SortType {
     MostUpVoted,
     LeastUpVoted,
     MostDownVoted,

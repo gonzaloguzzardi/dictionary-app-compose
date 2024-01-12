@@ -1,4 +1,4 @@
-package com.example.dictionaryappcompose.presentation.definitions_list.components.searchField
+package com.example.dictionaryappcompose.presentation.components.searchField
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.IntrinsicSize
