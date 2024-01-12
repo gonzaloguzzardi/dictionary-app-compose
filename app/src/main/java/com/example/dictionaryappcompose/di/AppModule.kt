@@ -8,14 +8,16 @@ import com.example.dictionaryappcompose.data.repository.datasources.remote.apis.
 import com.example.dictionaryappcompose.domain.repository.DictionaryRepository
 import com.example.dictionaryappcompose.domain.useCases.getDefinitions.GetDefinitionsUseCase
 import com.example.dictionaryappcompose.domain.useCases.sortDefinitions.SortDefinitionsUseCase
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -40,11 +42,17 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(BASE_URL)
-        .client(okHttpClient)
-        .build()
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        val contentType = "application/json".toMediaType()
+        val json = Json {
+            ignoreUnknownKeys = true
+        }
+        return Retrofit.Builder()
+            .addConverterFactory(json.asConverterFactory(contentType))
+            .baseUrl(BASE_URL)
+            .client(okHttpClient)
+            .build()
+    }
 
     @Provides
     @Singleton
