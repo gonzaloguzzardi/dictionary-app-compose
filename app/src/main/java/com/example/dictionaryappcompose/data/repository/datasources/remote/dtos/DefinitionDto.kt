@@ -1,10 +1,12 @@
 package com.example.dictionaryappcompose.data.repository.datasources.remote.dtos
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class DefinitionDto(
-    @SerializedName("definition") val definition: String?,
-    @SerializedName("author") val author: String?,
-    @SerializedName("thumbs_up") val upVotes: Int?,
-    @SerializedName("thumbs_down") val downVotes: Int?
+    @SerialName("definition") val definition: String?,
+    @SerialName("author") val author: String?,
+    @SerialName("thumbs_up") val upVotes: Int?,
+    @SerialName("thumbs_down") val downVotes: Int?
 )
