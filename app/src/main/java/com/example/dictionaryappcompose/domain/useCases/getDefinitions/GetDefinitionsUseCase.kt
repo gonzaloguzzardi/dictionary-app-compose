@@ -1,4 +1,4 @@
-package com.example.dictionaryappcompose.domain.use_cases
+package com.example.dictionaryappcompose.domain.useCases.getDefinitions
 
 import com.example.dictionaryappcompose.common.Resource
 import com.example.dictionaryappcompose.domain.model.Definition

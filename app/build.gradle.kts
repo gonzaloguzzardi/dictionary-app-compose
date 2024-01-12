@@ -88,8 +88,10 @@ dependencies {
     implementation(libs.material3)
 
     // Dependency Injection
-    implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
 
     // Retrofit
     implementation(libs.retrofit2)
