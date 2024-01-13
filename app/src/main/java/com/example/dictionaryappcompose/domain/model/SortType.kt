@@ -7,7 +7,6 @@ enum class SortType {
     LeastDownVoted;
 
     companion object {
-        fun fromInt(value: Int): SortType =
-            entries.firstOrNull { it.ordinal == value } ?: MostUpVoted
+        fun fromInt(value: Int): SortType = entries.firstOrNull { it.ordinal == value } ?: MostUpVoted
     }
 }

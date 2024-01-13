@@ -10,7 +10,8 @@ import javax.inject.Inject
 class GetDefinitionsUseCase @Inject constructor(
     private val repository: DictionaryRepository
 ) {
-    operator fun invoke(word: String): Flow<Resource<List<Definition>>> = flow {
+    operator fun invoke(word: String): Flow<Resource<List<Definition>>> =
+        flow {
         emit(Resource.Loading())
         emit(repository.getDefinitionsForWord(word))
     }

@@ -23,7 +23,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
     private const val BASE_URL = "https://mashape-community-urban-dictionary.p.rapidapi.com"
 
     @Singleton
@@ -44,9 +43,10 @@ object AppModule {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         val contentType = "application/json".toMediaType()
-        val json = Json {
-            ignoreUnknownKeys = true
-        }
+        val json =
+            Json {
+                ignoreUnknownKeys = true
+            }
         return Retrofit.Builder()
             .addConverterFactory(json.asConverterFactory(contentType))
             .baseUrl(BASE_URL)
@@ -76,6 +76,5 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideSortDefinitionsUseCase(): SortDefinitionsUseCase =
-        SortDefinitionsUseCase()
+    fun provideSortDefinitionsUseCase(): SortDefinitionsUseCase = SortDefinitionsUseCase()
 }

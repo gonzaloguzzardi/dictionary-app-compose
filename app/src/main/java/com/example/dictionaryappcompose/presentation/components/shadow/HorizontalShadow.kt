@@ -14,22 +14,25 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun HorizontalShadow(
-    modifier: Modifier,
-    descendingShadow: Boolean = true,
-    height: Dp = 4.dp
-) {
+fun HorizontalShadow(modifier: Modifier, descendingShadow: Boolean = true, height: Dp = 4.dp) {
     val shadowColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.1f)
     val banishedShadowColor = shadowColor.copy(alpha = 0f)
-    val colors = if (descendingShadow) listOf(shadowColor, banishedShadowColor) else listOf(
-        banishedShadowColor,
-        shadowColor
-    )
+    val colors =
+        if (descendingShadow) {
+            listOf(shadowColor, banishedShadowColor)
+        } else {
+            listOf(
+                banishedShadowColor,
+                shadowColor
+            )
+        }
     Box(
-        modifier = modifier
+        modifier =
+        modifier
             .height(height)
             .background(
-                brush = Brush.verticalGradient(
+                brush =
+                Brush.verticalGradient(
                     colors = colors
                 )
             )
@@ -40,7 +43,8 @@ fun HorizontalShadow(
 @Composable
 fun HorizontalShadowPreview() {
     HorizontalShadow(
-        modifier = Modifier
+        modifier =
+        Modifier
             .fillMaxWidth()
             .padding(vertical = 32.dp)
     )

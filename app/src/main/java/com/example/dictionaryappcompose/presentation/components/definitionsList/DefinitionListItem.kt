@@ -28,7 +28,8 @@ fun DefinitionListItem(definition: Definition, modifier: Modifier) {
         border = BorderStroke(0.5.dp, MaterialTheme.colorScheme.tertiary),
     ) {
         Column(
-            modifier = Modifier
+            modifier =
+            Modifier
                 .padding(8.dp)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.Start
@@ -57,7 +58,8 @@ fun DefinitionListItem(definition: Definition, modifier: Modifier) {
                         iconResource = R.drawable.ic_thumb_up
                     )
                     TextIcon(
-                        modifier = Modifier
+                        modifier =
+                        Modifier
                             .padding(start = 16.dp)
                             .wrapContentSize(),
                         text = (definition.downVotes).toString(),
@@ -65,7 +67,6 @@ fun DefinitionListItem(definition: Definition, modifier: Modifier) {
                     )
                 }
             }
-
         }
     }
 }
@@ -74,13 +75,15 @@ fun DefinitionListItem(definition: Definition, modifier: Modifier) {
 @Composable
 fun DefinitionListItemPreview() {
     DefinitionListItem(
-        definition = Definition(
+        definition =
+        Definition(
             definition = "\"A word to use in place of, \"awesome,\" \"cool,\" \"[groovy],\" \"[rad],\" \"[fly],\" or any other words to describe something you find amazing.\"",
             author = "payinginpalaver",
             upVotes = 21,
             downVotes = 9
         ),
-        modifier = Modifier
+        modifier =
+        Modifier
             .fillMaxWidth()
             .padding(16.dp)
     )

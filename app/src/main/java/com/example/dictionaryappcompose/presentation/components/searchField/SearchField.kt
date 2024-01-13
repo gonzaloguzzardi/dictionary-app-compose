@@ -29,10 +29,7 @@ import androidx.compose.ui.unit.dp
 import com.example.dictionaryappcompose.R
 
 @Composable
-fun SearchField(
-    modifier: Modifier = Modifier,
-    onSearchWordPressed: (String) -> Unit
-) {
+fun SearchField(modifier: Modifier = Modifier, onSearchWordPressed: (String) -> Unit) {
     var text by remember { mutableStateOf("") }
     val focusManager = LocalFocusManager.current
 
@@ -45,14 +42,17 @@ fun SearchField(
             onValueChange = { text = it },
             singleLine = true,
             shape = RoundedCornerShape(24.dp),
-            modifier = Modifier
+            modifier =
+            Modifier
                 .weight(1f)
                 .padding(end = 8.dp),
             label = { Text(stringResource(id = R.string.search_view_input_label)) },
-            keyboardOptions = KeyboardOptions(
+            keyboardOptions =
+            KeyboardOptions(
                 imeAction = ImeAction.Search
             ),
-            keyboardActions = KeyboardActions(
+            keyboardActions =
+            KeyboardActions(
                 onSearch = {
                     onSearchWordPressed(text)
                     focusManager.moveFocus(FocusDirection.Down)
@@ -65,7 +65,8 @@ fun SearchField(
             onClick = {
                 onSearchWordPressed(text)
                 focusManager.moveFocus(FocusDirection.Down)
-            }) {
+            }
+        ) {
             Text(
                 text = stringResource(id = R.string.search_view_button_text)
             )

@@ -29,16 +29,15 @@ import com.example.dictionaryappcompose.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchFilters(
-    modifier: Modifier = Modifier, onFilterApplied: (Int) -> Unit
-) {
+fun SearchFilters(modifier: Modifier = Modifier, onFilterApplied: (Int) -> Unit) {
     val sortOptions = stringArrayResource(id = R.array.search_filters_sort_options)
 
     var expanded by remember { mutableStateOf(false) }
     var selectedText by remember { mutableStateOf(sortOptions[0]) }
 
     Row(
-        modifier = modifier, verticalAlignment = Alignment.CenterVertically
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         ExposedDropdownMenuBox(
             expanded = expanded,
@@ -60,7 +59,8 @@ fun SearchFilters(
                 textStyle = MaterialTheme.typography.labelLarge,
                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                 modifier = Modifier.menuAnchor(),
-                colors = TextFieldDefaults.colors(
+                colors =
+                TextFieldDefaults.colors(
                     focusedContainerColor = Color.Transparent,
                     unfocusedContainerColor = Color.Transparent,
                     disabledContainerColor = Color.Transparent,
@@ -74,7 +74,8 @@ fun SearchFilters(
                 expanded = expanded,
                 onDismissRequest = {
                     expanded = false
-                }) {
+                }
+            ) {
                 sortOptions.forEach { item ->
                     DropdownMenuItem(
                         text = {
@@ -87,7 +88,8 @@ fun SearchFilters(
                             selectedText = item
                             expanded = false
                             onFilterApplied(sortOptions.indexOf(item))
-                        })
+                        }
+                    )
                 }
             }
         }

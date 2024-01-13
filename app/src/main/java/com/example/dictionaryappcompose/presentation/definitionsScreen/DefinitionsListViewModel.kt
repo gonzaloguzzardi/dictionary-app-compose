@@ -20,7 +20,6 @@ class DefinitionsListViewModel @Inject constructor(
     private val getDefinitionsUseCase: GetDefinitionsUseCase,
     private val sortDefinitionsUseCase: SortDefinitionsUseCase
 ) : ViewModel() {
-
     private val _uiState = MutableStateFlow(DefinitionsListState())
     val uiState: StateFlow<DefinitionsListState> = _uiState.asStateFlow()
 
@@ -59,10 +58,11 @@ class DefinitionsListViewModel @Inject constructor(
     fun sortDefinitions(sortTypeValue: Int) {
         val sortType = SortType.fromInt(sortTypeValue)
         val sortedDefinitions = sortDefinitionsUseCase(_uiState.value.definitions, sortType)
-        _uiState.value = _uiState.value.copy(
-            isLoading = false,
-            definitions = sortedDefinitions,
-            shouldRestartScroll = true
-        )
+        _uiState.value =
+            _uiState.value.copy(
+                isLoading = false,
+                definitions = sortedDefinitions,
+                shouldRestartScroll = true
+            )
     }
 }

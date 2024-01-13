@@ -7,7 +7,6 @@ import com.example.dictionaryappcompose.data.repository.datasources.remote.dtos.
 import com.example.dictionaryappcompose.domain.model.Definition
 import okio.IOException
 import retrofit2.HttpException
-import java.lang.Exception
 import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(
@@ -19,9 +18,9 @@ class RemoteDataSource @Inject constructor(
             Resource.Success(definitionsResponse.toDomainDefinitions())
         } catch (e: HttpException) {
             Resource.Error(e.localizedMessage ?: "An unexpected error occurred")
-        } catch (e: IOException) {
+        } catch (_: IOException) {
             Resource.Error("Couldn't reach server. Check your internet connection.")
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             Resource.Error("Unknown Error. Try again later")
         }
     }

@@ -49,28 +49,33 @@ fun DefinitionsList(
         Text(
             text = stringResource(id = R.string.definitions_list_header, wordSearched),
             style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier
+            modifier =
+            Modifier
                 .fillMaxWidth()
                 .padding(bottom = 8.dp)
         )
 
         Box(Modifier.fillMaxSize()) {
             LazyColumn(
-                modifier = Modifier
+                modifier =
+                Modifier
                     .fillMaxSize(),
                 state = lazyListState
             ) {
                 items(
                     items = definitions,
-                    key = { item -> item.definition.hashCode() }) { definition ->
+                    key = { item -> item.definition.hashCode() }
+                ) { definition ->
                     if (definition.definition.isNotBlank()) {
                         DefinitionListItem(
                             definition = definition,
-                            modifier = Modifier
+                            modifier =
+                            Modifier
                                 .fillMaxWidth()
                                 .padding(bottom = 16.dp)
                                 .animateItemPlacement(
-                                    animationSpec = spring(
+                                    animationSpec =
+                                    spring(
                                         dampingRatio = Spring.DampingRatioNoBouncy,
                                         stiffness = Spring.StiffnessLow
                                     )
@@ -81,7 +86,8 @@ fun DefinitionsList(
             }
             if (lazyListState.canScrollBackward) {
                 HorizontalShadow(
-                    modifier = Modifier
+                    modifier =
+                    Modifier
                         .fillMaxWidth()
                         .align(Alignment.TopCenter),
                     descendingShadow = true,
@@ -90,7 +96,8 @@ fun DefinitionsList(
             }
             if (lazyListState.canScrollForward) {
                 HorizontalShadow(
-                    modifier = Modifier
+                    modifier =
+                    Modifier
                         .fillMaxWidth()
                         .align(Alignment.BottomCenter),
                     descendingShadow = false,
@@ -104,22 +111,24 @@ fun DefinitionsList(
 @Preview(showBackground = true)
 @Composable
 fun DefinitionsListPreview() {
-    val definitions = mutableListOf(
-        Definition(
-            definition = "\"A word to use in place of, \"awesome,\" \"cool,\" \"[groovy],\" \"[rad],\" \"[fly],\" or any other words to describe something you find amazing.\"",
-            author = "payinginpalaver",
-            upVotes = 21,
-            downVotes = 9
-        ),
-        Definition(
-            definition = "\"Describes something as [very good]. Used mainly by [the British] [teenagers] and the LPcool.\"",
-            author = "Louie Kay",
-            upVotes = 131,
-            downVotes = 29
+    val definitions =
+        mutableListOf(
+            Definition(
+                definition = "\"A word to use in place of, \"awesome,\" \"cool,\" \"[groovy],\" \"[rad],\" \"[fly],\" or any other words to describe something you find amazing.\"",
+                author = "payinginpalaver",
+                upVotes = 21,
+                downVotes = 9
+            ),
+            Definition(
+                definition = "\"Describes something as [very good]. Used mainly by [the British] [teenagers] and the LPcool.\"",
+                author = "Louie Kay",
+                upVotes = 131,
+                downVotes = 29
+            )
         )
-    )
     DefinitionsList(
-        modifier = Modifier
+        modifier =
+        Modifier
             .fillMaxSize()
             .padding(16.dp),
         wordSearched = "Quality",

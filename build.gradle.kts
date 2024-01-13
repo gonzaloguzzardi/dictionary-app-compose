@@ -1,3 +1,6 @@
+import io.gitlab.arturbosch.detekt.Detekt
+import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     alias(libs.plugins.androidApplication) apply false
@@ -7,10 +10,11 @@ plugins {
     alias(libs.plugins.detekt) apply true
 }
 
-detekt {
-    toolVersion = "1.23.3"
-    config.setFrom(file("config/detekt/detekt.yml"))
-    buildUponDefaultConfig = true
+tasks.withType<Detekt>().configureEach {
+    jvmTarget = "1.8"
+}
+tasks.withType<DetektCreateBaselineTask>().configureEach {
+    jvmTarget = "1.8"
 }
 
 dependencies {
