@@ -4,15 +4,4 @@ plugins {
     alias(libs.plugins.kotlinAndroid) apply false
     alias(libs.plugins.kotlinKapt) apply false
     alias(libs.plugins.hilt) apply false
-    alias(libs.plugins.detekt) apply true
-}
-
-detekt {
-    toolVersion = "1.23.3"
-    config.setFrom(file("config/detekt/detekt.yml"))
-    buildUponDefaultConfig = true
-}
-
-dependencies {
-    detektPlugins(libs.detekt.formatting)
 }

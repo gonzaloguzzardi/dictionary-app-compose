@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.detekt)
 }
 
 kapt {
@@ -70,6 +71,13 @@ android {
     }
 }
 
+detekt {
+    toolVersion = "1.23.4"
+    config.setFrom(file("$rootDir/config/detekt/detekt.yml"))
+    autoCorrect = true
+    parallel = true
+}
+
 fun getRapidApiKey(): String {
     val keyValues = HashMap<String, String>()
     File("${project.rootDir}/secrets.properties").forEachLine {
@@ -79,6 +87,8 @@ fun getRapidApiKey(): String {
 }
 
 dependencies {
+    detektPlugins(libs.detekt.formatting)
+
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)

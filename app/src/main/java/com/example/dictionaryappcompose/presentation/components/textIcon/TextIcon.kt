@@ -36,4 +36,3 @@ fun TextIconPreview() {
         iconResource = R.drawable.ic_thumb_up
     )
 }
-

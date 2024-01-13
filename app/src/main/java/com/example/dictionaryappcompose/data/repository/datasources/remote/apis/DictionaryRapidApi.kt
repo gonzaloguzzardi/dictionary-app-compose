@@ -7,7 +7,6 @@ import retrofit2.http.Headers
 import retrofit2.http.Query
 
 interface DictionaryRapidApi {
-
     @Headers(
         "x-rapidapi-key: ${BuildConfig.RAPID_API_KEY}",
         "x-rapidapi-host: mashape-community-urban-dictionary.p.rapidapi.com",

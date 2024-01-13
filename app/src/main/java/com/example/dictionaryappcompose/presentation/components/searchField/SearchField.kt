@@ -19,7 +19,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,11 +29,10 @@ import androidx.compose.ui.unit.dp
 import com.example.dictionaryappcompose.R
 
 @Composable
-fun SearchField(
-    modifier: Modifier = Modifier,
-    onSearchWordPressed: (String) -> Unit
-) {
+fun SearchField(modifier: Modifier = Modifier, onSearchWordPressed: (String) -> Unit) {
     var text by remember { mutableStateOf("") }
+    val focusManager = LocalFocusManager.current
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier,
@@ -41,16 +42,20 @@ fun SearchField(
             onValueChange = { text = it },
             singleLine = true,
             shape = RoundedCornerShape(24.dp),
-            modifier = Modifier
+            modifier =
+            Modifier
                 .weight(1f)
                 .padding(end = 8.dp),
             label = { Text(stringResource(id = R.string.search_view_input_label)) },
-            keyboardOptions = KeyboardOptions(
+            keyboardOptions =
+            KeyboardOptions(
                 imeAction = ImeAction.Search
             ),
-            keyboardActions = KeyboardActions(
+            keyboardActions =
+            KeyboardActions(
                 onSearch = {
                     onSearchWordPressed(text)
+                    focusManager.moveFocus(FocusDirection.Down)
                 }
             ),
         )
@@ -59,7 +64,9 @@ fun SearchField(
             modifier = Modifier.height(IntrinsicSize.Max),
             onClick = {
                 onSearchWordPressed(text)
-            }) {
+                focusManager.moveFocus(FocusDirection.Down)
+            }
+        ) {
             Text(
                 text = stringResource(id = R.string.search_view_button_text)
             )

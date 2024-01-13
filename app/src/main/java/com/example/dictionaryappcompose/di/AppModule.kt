@@ -23,7 +23,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
     private const val BASE_URL = "https://mashape-community-urban-dictionary.p.rapidapi.com"
 
     @Singleton
@@ -76,6 +75,5 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideSortDefinitionsUseCase(): SortDefinitionsUseCase =
-        SortDefinitionsUseCase()
+    fun provideSortDefinitionsUseCase(): SortDefinitionsUseCase = SortDefinitionsUseCase()
 }

@@ -7,9 +7,10 @@ internal fun DefinitionsApiResponse.toDomainDefinitions(): List<Definition> {
 
     return definitions.map { definitionDto ->
         Definition(
-            definition = definitionDto.definition,
-            author = definitionDto.author,
-            upVotes = definitionDto.upVotes, downVotes = definitionDto.downVotes
+            definition = definitionDto.definition.orEmpty(),
+            author = definitionDto.author.orEmpty(),
+            upVotes = definitionDto.upVotes ?: 0,
+            downVotes = definitionDto.downVotes ?: 0
         )
     }
 }
