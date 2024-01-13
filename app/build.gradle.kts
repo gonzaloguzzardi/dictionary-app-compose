@@ -72,7 +72,7 @@ android {
 }
 
 detekt {
-    toolVersion = "1.23.3"
+    toolVersion = "1.23.4"
     config.setFrom(file("$rootDir/config/detekt/detekt.yml"))
     autoCorrect = true
     parallel = true
