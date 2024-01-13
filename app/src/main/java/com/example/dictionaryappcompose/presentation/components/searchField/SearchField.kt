@@ -19,7 +19,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,6 +34,8 @@ fun SearchField(
     onSearchWordPressed: (String) -> Unit
 ) {
     var text by remember { mutableStateOf("") }
+    val focusManager = LocalFocusManager.current
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier,
@@ -51,6 +55,7 @@ fun SearchField(
             keyboardActions = KeyboardActions(
                 onSearch = {
                     onSearchWordPressed(text)
+                    focusManager.moveFocus(FocusDirection.Down)
                 }
             ),
         )
@@ -59,6 +64,7 @@ fun SearchField(
             modifier = Modifier.height(IntrinsicSize.Max),
             onClick = {
                 onSearchWordPressed(text)
+                focusManager.moveFocus(FocusDirection.Down)
             }) {
             Text(
                 text = stringResource(id = R.string.search_view_button_text)

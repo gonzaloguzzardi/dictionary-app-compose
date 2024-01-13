@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Snackbar
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -47,7 +48,14 @@ fun DefinitionsListScreenContent(
 
     Scaffold(
         modifier = Modifier.padding(16.dp),
-        snackbarHost = { SnackbarHost(snackbarHostState) }
+        snackbarHost = {
+            SnackbarHost(snackbarHostState) { data ->
+                Snackbar(
+                    containerColor = MaterialTheme.colorScheme.error,
+                    snackbarData = data
+                )
+            }
+        }
     ) { paddingValues ->
         Column(modifier = Modifier.padding(paddingValues)) {
             SearchField(modifier = Modifier.fillMaxWidth(),
@@ -75,7 +83,8 @@ fun DefinitionsListScreenContent(
                             .fillMaxSize()
                             .padding(top = 16.dp),
                         wordSearched = uiState.wordSearched,
-                        definitions = uiState.definitions
+                        definitions = uiState.definitions,
+                        shouldScrollToStart = uiState.shouldRestartScroll
                     )
                 } else if (uiState.error.isNotBlank()) {
                     LaunchedEffect(snackbarHostState) {
@@ -108,7 +117,12 @@ fun DefinitionsListScreenPreview() {
         )
     )
     DefinitionsListScreenContent(
-        uiState = DefinitionsListState(isLoading = false, definitions = definitions, error = ""),
+        uiState = DefinitionsListState(
+            isLoading = false,
+            wordSearched = "Quality",
+            definitions = definitions,
+            error = ""
+        ),
         onSearchWordPressed = {},
         onFilterApplied = {}
     )

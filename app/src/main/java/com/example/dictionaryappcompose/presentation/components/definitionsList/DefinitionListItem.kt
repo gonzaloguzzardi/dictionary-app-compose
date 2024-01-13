@@ -34,7 +34,7 @@ fun DefinitionListItem(definition: Definition, modifier: Modifier) {
             horizontalAlignment = Alignment.Start
         ) {
             Text(
-                text = definition.definition ?: "",
+                text = definition.definition,
                 style = MaterialTheme.typography.bodyMedium
             )
 
@@ -44,7 +44,7 @@ fun DefinitionListItem(definition: Definition, modifier: Modifier) {
                 verticalAlignment = Alignment.Bottom
             ) {
                 Text(
-                    text = definition.author ?: "",
+                    text = definition.author,
                     modifier = Modifier.padding(top = 8.dp),
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.Bold,
@@ -53,14 +53,14 @@ fun DefinitionListItem(definition: Definition, modifier: Modifier) {
                 Row(verticalAlignment = Alignment.Bottom) {
                     TextIcon(
                         modifier = Modifier.wrapContentSize(),
-                        text = (definition.upVotes ?: 0).toString(),
+                        text = (definition.upVotes).toString(),
                         iconResource = R.drawable.ic_thumb_up
                     )
                     TextIcon(
                         modifier = Modifier
                             .padding(start = 16.dp)
                             .wrapContentSize(),
-                        text = (definition.downVotes ?: 0).toString(),
+                        text = (definition.downVotes).toString(),
                         iconResource = R.drawable.ic_thumb_down
                     )
                 }
