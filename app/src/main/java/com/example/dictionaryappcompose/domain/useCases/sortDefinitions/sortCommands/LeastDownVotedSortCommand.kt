@@ -3,5 +3,6 @@ package com.example.dictionaryappcompose.domain.useCases.sortDefinitions.sortCom
 import com.example.dictionaryappcompose.domain.model.Definition
 
 class LeastDownVotedSortCommand : SortCommand {
-    override fun execute(definitions: List<Definition>): List<Definition> = definitions.sortedBy { it.downVotes }
+    override fun execute(definitions: List<Definition>): List<Definition> =
+        definitions.sortedBy { it.downVotes }
 }
