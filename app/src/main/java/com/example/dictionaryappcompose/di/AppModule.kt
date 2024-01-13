@@ -43,10 +43,9 @@ object AppModule {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         val contentType = "application/json".toMediaType()
-        val json =
-            Json {
-                ignoreUnknownKeys = true
-            }
+        val json = Json {
+            ignoreUnknownKeys = true
+        }
         return Retrofit.Builder()
             .addConverterFactory(json.asConverterFactory(contentType))
             .baseUrl(BASE_URL)
