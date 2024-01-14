@@ -6,7 +6,7 @@ Simple app to fetch words using Urban Dictionary API using Clean architecture an
 [![Gradle](https://img.shields.io/badge/Gradle-8.2-blue?style=flat)](https://gradle.org)
 
 [![API](https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=24)
-[![status](https://github.com/gonzaloguzzardi/dictionary-app-compose/blob/main/.github/workflows/android_build.yml/badge.svg?branch=main)](https://github.com/gonzaloguzzardi/dictionary-app-compose/actions?query=branch%3Amain++)
+[![Build Sanity](https://github.com/gonzaloguzzardi/dictionary-app-compose/actions/workflows/android_build.yml/badge.svg?branch=main)](https://github.com/gonzaloguzzardi/dictionary-app-compose/actions?query=branch%3Amain++)
 [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
 
 Requires Android Studio Hedgehog
